@@ -1,8 +1,8 @@
 body {background-color: #f1caf1; font-family: Arial, sans-serif;}
-header {background-color: #6d0770; color: white; padding: 8px 10px; display: flex; width: 100%;
-        box-sizing: border-box; justify-content: space-between; align-items: center; position: fixed;
-        top: 0;}
+header {background-color: #6d0770; color: white; padding: 8px; display: flex; top: 0; width: 100%;
+        justify-content: space-between; align-items: center; position: fixed; box-sizing: border-box;}
 nav a {color:white}
 h2, p {color: black}
 main {padding: 10px; padding-top: 70px;}
-figure {text-align: center;}
+figure {text-align: center;}    
+html {overflow-y: scroll;}
