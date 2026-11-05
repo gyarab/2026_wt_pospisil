@@ -1,0 +1,43 @@
+//facebook
+const toubunnohanayome = document.getElementById("contact-info");
+let fbcount = Math.floor(Math.random()*150);
+
+for(let i = 0; i < fbcount; i++){
+    let f = document.createElement("img");
+    f.src = "../images/facebook.png";
+    f.alt = "facebook" + (i+1);
+    f.width = 30;
+
+    let s = document.createElement("strong");
+    s.textContent = " Facebook oddělení " + (i+1) + ": ";
+
+    let a = document.createElement("a");
+    a.textContent = "rksnecek" + (i+1);
+
+    let e = document.createElement("p");
+    e.appendChild(f);
+    e.appendChild(s);
+    e.appendChild(a);
+    toubunnohanayome.insertBefore(e, document.getElementById("insta"));
+}
+
+//export (od chati-chan aka chat g p t aka IAčko)
+document.getElementById("export-contacts").addEventListener("click", () => {
+    const contacts = [...document.querySelectorAll("#contact-info p")]
+        .map(p => {
+            const clone = p.cloneNode(true);
+            clone.querySelectorAll("img").forEach(img => img.remove());
+            return clone.innerText.trim().replace(/\s+/g, " ");
+        })
+        .filter(Boolean);
+
+    const text = contacts.join("\r\n");
+
+    const link = document.createElement("a");
+    link.href = "data:text/plain;charset=utf-8," + encodeURIComponent(text);
+    link.download = "kontakty.txt";
+    link.click();
+});
+
+//ip
+function getIP(json) {document.getElementById("ip").textContent = json.ip;}

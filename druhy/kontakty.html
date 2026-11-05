@@ -159,38 +159,17 @@
                 <p>
                     <img src="../images/sporcle.png" alt="sporcle" width="30">
                     <strong>Sporcle:</strong> <a>rksnecek</a> </p>
+                <p>
+                    <img src="../images/idos.png" alt="idos" width="30">
+                    <strong>IDOS:</strong> <a>Realitka S.</a> </p>
             </div>
 
-            <script type="application/javascript">
-                function getIP(json) {document.getElementById("ip").textContent = json.ip;}
-            </script>
+            <button type="button" class="btn btn-primary mt-3" id="export-contacts">
+                Exportovat kontakty
+            </button>
 
-            <script type="application/javascript" src="https://api.ipify.org/?format=jsonp&callback=getIP">
-            </script>
-
-            <script>
-                const toubunnohanayome = document.getElementById("contact-info");
-                let fbcount = Math.floor(Math.random()*150);
-
-                for(let i = 0; i < fbcount; i++){
-                    let f = document.createElement("img");
-                    f.src = "../images/facebook.png";
-                    f.alt = "facebook" + (i+1);
-                    f.width = 30;
-
-                    let s = document.createElement("strong");
-                    s.textContent = " Facebook oddělení " + (i+1) + ": ";
-
-                    let a = document.createElement("a");
-                    a.textContent = "rksnecek" + (i+1);
-
-                    let e = document.createElement("p");
-                    e.appendChild(f);
-                    e.appendChild(s);
-                    e.appendChild(a);
-                    toubunnohanayome.insertBefore(e, document.getElementById("insta"));
-                }
-            </script>
+            <script src = "../scripts/kontakty.js"></script>
+            <script src="https://api.ipify.org/?format=jsonp&callback=getIP"></script>
         </main>
     </body>
 </html>
