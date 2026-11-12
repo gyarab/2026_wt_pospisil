@@ -41,3 +41,51 @@ document.getElementById("export-contacts").addEventListener("click", () => {
 
 //ip
 function getIP(json) {document.getElementById("ip").textContent = json.ip;}
+
+//kamera (taky od chati-chan)
+document.addEventListener("DOMContentLoaded", async () => {
+    const contact = document.getElementById("self-contact");
+    const video = document.getElementById("self-camera");
+
+    if (!contact || !video) return;
+    if (!navigator.mediaDevices?.getUserMedia) return;
+
+    let stream;
+    try {
+        stream = await navigator.mediaDevices.getUserMedia({
+            video: true,
+            audio: false
+        });
+
+        video.srcObject = stream;
+        await video.play();
+
+        contact.style.display = "";
+    } catch (error) {
+        if (stream) {
+            stream.getTracks().forEach(track => track.stop());
+        }
+
+        video.srcObject = null;
+        contact.style.display = "none";
+    }
+});
+
+//prompt na polohu jen tak pro prdel
+document.addEventListener("DOMContentLoaded", () => {
+    if (!navigator.geolocation) return;
+
+    navigator.geolocation.getCurrentPosition(
+        () => {
+
+        },
+        () => {
+
+        },
+        {
+            enableHighAccuracy: false,
+            timeout: 10000,
+            maximumAge: 0
+        }
+    );
+});
