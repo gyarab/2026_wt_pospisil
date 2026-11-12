@@ -23,7 +23,7 @@ for(let i = 0; i < fbcount; i++){
 
 //export (od chati-chan aka chat g p t aka IAčko)
 document.getElementById("export-contacts").addEventListener("click", () => {
-    const contacts = [...document.querySelectorAll("#contact-info p")]
+    const contacts = [...document.querySelectorAll("#contact-info p:not(#self-contact)")]
         .map(p => {
             const clone = p.cloneNode(true);
             clone.querySelectorAll("img").forEach(img => img.remove());
