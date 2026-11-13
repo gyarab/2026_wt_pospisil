@@ -1,5 +1,5 @@
 //facebook
-const toubunnohanayome = document.getElementById("contact-info");
+const gotoubunnohanayome = document.getElementById("contact-info");
 let fbcount = Math.floor(Math.random()*150);
 
 for(let i = 0; i < fbcount; i++){
@@ -18,7 +18,7 @@ for(let i = 0; i < fbcount; i++){
     e.appendChild(f);
     e.appendChild(s);
     e.appendChild(a);
-    toubunnohanayome.insertBefore(e, document.getElementById("insta"));
+    gotoubunnohanayome.insertBefore(e, document.getElementById("insta"));
 }
 
 //export (od chati-chan aka chat g p t aka IAčko)
@@ -35,7 +35,7 @@ document.getElementById("export-contacts").addEventListener("click", () => {
 
     const link = document.createElement("a");
     link.href = "data:text/plain;charset=utf-8," + encodeURIComponent(text);
-    link.download = "kontakty.txt";
+    link.download = "kontakty.snek";
     link.click();
 });
 
@@ -76,16 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!navigator.geolocation) return;
 
     navigator.geolocation.getCurrentPosition(
-        () => {
-
-        },
-        () => {
-
-        },
-        {
-            enableHighAccuracy: false,
-            timeout: 10000,
-            maximumAge: 0
-        }
+        () => {},
+        () => {},
     );
 });
