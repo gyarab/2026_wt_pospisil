@@ -9,7 +9,20 @@ for(let i = 0; i < fbcount; i++){
     f.width = 30;
 
     let s = document.createElement("strong");
-    s.textContent = " Facebook oddělení " + (i+1) + ": ";
+    if(i === 104){
+        s.textContent = " Facebook oddělení 10";
+
+        let Link = document.createElement("a");
+        Link.textContent = "5";
+        Link.href = "../recept/recept.html";
+        Link.style.color = "inherit";
+        Link.style.textDecoration = "none";
+
+        s.appendChild(Link);
+        s.appendChild(document.createTextNode(": "));
+    } else {
+        s.textContent = " Facebook oddělení " + (i+1) + ": ";
+    }
 
     let a = document.createElement("a");
     a.textContent = "rksnecek" + (i+1);

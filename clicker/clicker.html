@@ -11,15 +11,28 @@
         <h1>Clicker</h1>
         <nav>
             <a href="../index.html">O nás</a> |
-            <a href="./kontakty.html">Kontakt</a> |
-            <a href="./nemovitosti.html">Nemovitosti</a>
+            <a href="../druhy/kontakty.html">Kontakt</a> |
+            <a href="../druhy/nemovitosti.html">Nemovitosti</a>
         </nav>
         </header>
         <main class="mt-4">
-            <p id="clicks">0</p>
+            <h1>RK Č̌licker</h1>
+            <p id="clicks" class="mt-4">0</p>
             <button id="clickerButton" class="btn btn-primary">Zisk měny</button>
-            <button id="upgradeButton" class="btn btn-primary">+1 měny/klik (cena: 10)</button>
-            <button id="autoclickButton" class="btn btn-primary">autoclicker (cena:100) (+0 měny, +0 cps)</button>
-            <script src="../scripts/clicker.js"></script>
+            <button id="reset" class="btn btn-primary">Reset</button>
+            <script>
+                let mena = 0;
+
+                //clicker
+                clickerButton.addEventListener("click", () => {
+                    mena += 1;
+                    document.getElementById("clicks").textContent = mena;
+                });
+
+                //reset progress
+                reset.addEventListener("click", () => {
+                    location.reload();
+                })
+            </script>
         </main>
     </body>

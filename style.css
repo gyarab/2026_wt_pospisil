@@ -6,3 +6,4 @@ h2, p, i {color: black}
 main {padding: 10px; padding-top: 70px;}
 figure {text-align: center;}    
 html {overflow-y: scroll;}
+video {transform: scaleX(-1);}
