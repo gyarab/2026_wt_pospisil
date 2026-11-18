@@ -2,59 +2,344 @@
 <html lang="cs" data-bs-theme="light">
 <head>
     <meta charset="UTF-8">
-    <!-- BEZ TOHOTO ŘÁDKU RESPONZIVITA NA MOBILU NEFUNGUJE -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boxes</title>
 
-    <!-- Bootstrap 6 (alpha) – CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
+    <!-- Bootstrap 6 Alpha -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
-        /* pomocné orámování krabic, ať vidíme, co se děje */
-        .krabice {
-            border: 2px dashed tomato;
-            padding: 1rem;
-            min-height: 80px;
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #222;
+            background: #fff;
+            overflow-x: clip;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 1rem 6%;
+            background: #fff;
+            border-bottom: 1px solid #eee;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+
+            margin: 0;
+            font-size: 1.4rem;
+        }
+
+        .logo img {
+            width: 38px;
+            height: 38px;
+            object-fit: contain;
+        }
+
+        nav {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            font-size: .95rem;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .menu-button {
+            display: none;
+            border: 0;
+            background: none;
+            font-size: 1.6rem;
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+
+            padding: 5rem 8%;
+            background: #f7f5f1;
+        }
+
+        .hero > * {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .hero h2 {
+            max-width: 520px;
+            margin: 0 0 1rem;
+
+            font-size: clamp(2.2rem, 4vw, 3.8rem);
+            line-height: 1.1;
+            font-weight: 600;
+        }
+
+        .hero p {
+            max-width: 450px;
+            color: #666;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: .7rem;
+            padding: .75rem 1rem;
+
+            background: #222;
+            color: #fff;
+            border-radius: 10px;
+        }
+
+        .hero img {
+            width: 100%;
+            max-height: 340px;
+            object-fit: contain;
+        }
+
+        section.content {
+            padding: 4rem 6%;
+        }
+
+        .section-title {
+            margin: 0 0 2rem;
+            font-size: 1.7rem;
+            font-weight: 600;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            padding: 1.5rem;
+            border: 1px solid #e8e8e8;
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+        }
+
+        .card p {
+            margin: 0;
+            color: #666;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: .75rem;
+        }
+
+        .gallery img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+        }
+
+        footer {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+
+            padding: 1.5rem 6%;
+            background: #f7f5f1;
+            color: #555;
+            font-size: .9rem;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        @media (max-width: 767px) {
+            header {
+                flex-wrap: wrap;
+            }
+
+            .menu-button {
+                display: block;
+            }
+
+            nav {
+                display: none;
+                flex-direction: column;
+                gap: 0;
+
+                width: 100%;
+                padding-top: .75rem;
+            }
+
+            nav.open {
+                display: flex;
+            }
+
+            nav a {
+                padding: .65rem 0;
+                border-top: 1px solid #eee;
+            }
+
+            .hero {
+                flex-direction: column;
+                padding: 3rem 7%;
+                text-align: center;
+            }
+
+            .hero p {
+                margin-inline: auto;
+            }
+
+            .hero img {
+                max-height: 260px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            footer {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero p {
+                margin-inline: auto;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
         }
     </style>
 </head>
 <body>
+    <header>
+        <a class="logo" href="#home">
+            <img src="./img/box1.svg" alt="">
+            <strong>Boxes</strong>
+        </a>
 
-    <!-- Ukazatel aktuálního breakpointu (vpravo dole) -->
-    <div class="position-fixed bottom-0 end-0 m-3 badge theme-inverse fs-md">
-        <span class="sm:d-none">XS &lt; 576</span>
-        <span class="d-none sm:d-inline md:d-none">SM ≥ 576</span>
-        <span class="d-none md:d-inline lg:d-none">MD ≥ 768</span>
-        <span class="d-none lg:d-inline xl:d-none">LG ≥ 1024</span>
-        <span class="d-none xl:d-inline 2xl:d-none">XL ≥ 1280</span>
-        <span class="d-none 2xl:d-inline">2XL ≥ 1536</span>
-    </div>
+        <button class="menu-button" type="button" aria-label="Open menu"
+                aria-controls="main-nav" aria-expanded="false">☰</button>
 
-    <div class="container">
-        <h1 class="my-5">Boxes</h1>
-        
-    <div class="krabice">bez kontejneru</div>
-    <div class="container"><div class="krabice">container</div></div>
-    <div class="container-fluid"><div class="krabice">container-fluid</div></div>
-    <div class="row-g5">
-        <div class="row row-cols-1 md:row-cols-2 lg:row-cols-3 xl:row-cols-4 g-5">
+        <nav id="main-nav" aria-label="Main navigation">
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
 
-        <div class="krabice">1</div>
-        <div class="krabice">2</div>
-        <div class="krabice">3</div>
-        <div class="krabice">4</div>
-        <div class="krabice">5</div>
-        <div class="krabice">6</div>
-        <div class="krabice">7</div>
-        <div class="krabice">8</div>
-        <div class="krabice">9</div>
-        <div class="krabice">10</div>
-        <div class="krabice">11</div>
-        <div class="krabice">12</div>
-      </div>
-    </div>
+    <main>
+        <section class="hero" id="home">
+            <div>
+                <h2>Boxes co.</h2>
+                <p>Moving made easy with boxes.</p>
+                <a class="button" href="#services">Our services</a>
+            </div>
+            <img src="./img/hero.svg" alt="ty nejsi hrdina, Percy, ty jsi prdina">
+        </section>
 
-    <!-- Bootstrap 6 – JS (je to ES modul => type="module") -->
-    <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL" crossorigin="anonymous"></script>
+        <section class="content" id="services">
+            <h2 class="section-title">Services</h2>
+            <div class="cards">
+                <article class="card">
+                    <h3>Selling boxes</h3>
+                    <p>Boxes of different sizes for everyday use.</p>
+                </article>
+                <article class="card">
+                    <h3>Moving</h3>
+                    <p>Help with moving your things.</p>
+                </article>
+                <article class="card">
+                    <h3>Packing</h3>
+                    <p>Simple and safe packing before transport.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="content" id="gallery">
+            <h2 class="section-title">Gallery</h2>
+            <div class="gallery">
+                <img src="./img/box1.svg" alt="1">
+                <img src="./img/box2.svg" alt="2">
+                <img src="./img/box3.svg" alt="3">
+                <img src="./img/box4.svg" alt="4">
+                <img src="./img/box5.svg" alt="5">
+                <img src="./img/box6.svg" alt="6">
+                <img src="./img/box7.svg" alt="7">
+                <img src="./img/box8.svg" alt="8">
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <p>© 202026 Boxes</p>
+        <p>Boxes & moving</p>
+        <a href="mailto:zebernatka@gmail.com">Contact</a>
+    </footer>
+
+    <script>
+        const button = document.querySelector(".menu-button");
+        const nav = document.querySelector("#main-nav");
+
+        button.addEventListener("click", () => {
+            const open = nav.classList.toggle("open");
+            button.setAttribute("aria-expanded", open);
+            button.textContent = open ? "✕" : "☰";
+        });
+
+        nav.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", () => {
+                nav.classList.remove("open");
+                button.setAttribute("aria-expanded", "false");
+                button.textContent = "☰";
+            });
+        });
+    </script>
 </body>
 </html>
