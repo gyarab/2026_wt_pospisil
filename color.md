@@ -8,4 +8,4 @@ Samotný tvar působí moderně, dynamicky a zároveň trochu tajemně. Odkazuje
 
 Podle mého názoru je logo velmi povedené. Fialové odstíny mu dodávají kreativní a moderní vzhled a průhledné pozadí umožňuje jeho univerzální použití. Myslím si, že dobře vystihuje název Obsidian a vytváří snadno zapamatovatelnou vizuální identitu.
 
-![](https://commons.wikimedia.org/wiki/File:2023_Obsidian_logo.svg)
+![](https://commons.wikimedia.org/wiki/Special:Redirect/file/2023_Obsidian_logo.svg)
